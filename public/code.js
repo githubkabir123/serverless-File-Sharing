@@ -15,8 +15,19 @@
     document.getElementById("sender-start-con-btn").addEventListener("click", ()=>{
       const joinID = generateID();
       document.getElementById("join-id").innerHTML = `<b>Room ID:</b> <span>${joinID}</span>`;
+      document.getElementById("path-id").innerHTML = `<b>Share to get file:</b> <span title="Click to copy" onclick="copyToClipboard('${window.location.href}receiver.html')">${window.location.href}receiver.html</span>`;
       socket.emit("sender-join",{ uid:joinID });
     });
+
+    async function copyToClipboard(textToCopy) {
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        alert('Text copied to clipboard!');
+      } catch (err) {
+        console.error('Failed to copy text: ', err);
+        alert('Failed to copy text. Please try again or copy manually.');
+      }
+    }
 
     socket.on("init", uid=>{
       receiverID = uid;
