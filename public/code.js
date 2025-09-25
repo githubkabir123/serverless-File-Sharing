@@ -14,7 +14,7 @@
 
     document.getElementById("sender-start-con-btn").addEventListener("click", ()=>{
       const joinID = generateID();
-      document.getElementById("join-id").innerHTML = `<b>Room ID:</b> <span>${joinID}</span>`;
+      document.getElementById("join-id").innerHTML = `<b>Room ID:</b> <spantitle="Click to copy" onclick="copyToClipboard('${joinID}receiver.html')" >${joinID}</span>`;
       document.getElementById("path-id").innerHTML = `<b>Share to get file:</b> <span title="Click to copy" onclick="copyToClipboard('${window.location.href}receiver.html')">${window.location.href}receiver.html</span>`;
       socket.emit("sender-join",{ uid:joinID });
     });
