@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 
@@ -27,6 +28,6 @@ io.on("connection", function(socket){
 	})
 });
 
-server.listen(5000,()=>{
-	
+server.listen(process.env.PORT,()=>{
+	console.log(`http://localhost:${process.env.PORT}`)
 });
